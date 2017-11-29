@@ -24,4 +24,5 @@ Step 2. Add the dependency
 ***
 
 > ## Medal
-[！[]（https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg）（https://jitpack.io/#pdliugithub/CircleProgressTextView）
+
+ [！[]（https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg）（https://jitpack.io/#pdliugithub/CircleProgressTextView）
