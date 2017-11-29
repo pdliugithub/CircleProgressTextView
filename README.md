@@ -6,7 +6,7 @@ CircleProgressTextView
 
 ***
 
-Add it in your root build.gradle at the end of repositories:
+Step 1. Add it in your root build.gradle at the end of repositories:
 
 	allprojects {
 		repositories {
@@ -23,5 +23,5 @@ Step 2. Add the dependency
 
 ***
 
-##Medal
+## Medal
     [![](https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg)](https://jitpack.io/#pdliugithub/CircleProgressTextView)
