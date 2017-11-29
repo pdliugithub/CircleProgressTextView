@@ -2,7 +2,7 @@
 CircleProgressTextView
 
 
-##Use in help :
+## Use in help :
 
 ***
 
@@ -23,5 +23,5 @@ Step 2. Add the dependency
 
 ***
 
-## Medal
-    [![](https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg)](https://jitpack.io/#pdliugithub/CircleProgressTextView)
+> ## Medal
+[！[]（https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg）（https://jitpack.io/#pdliugithub/CircleProgressTextView）
