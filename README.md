@@ -20,3 +20,8 @@ Step 2. Add the dependency
 	dependencies {
 			compile 'com.github.pdliugithub:CircleProgressTextView:v1.0'
 	}
+
+***
+
+##Medal
+    [![](https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg)](https://jitpack.io/#pdliugithub/CircleProgressTextView)
