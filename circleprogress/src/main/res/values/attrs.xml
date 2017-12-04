@@ -3,5 +3,7 @@
     <!-- 圆形进度TextView -->
     <declare-styleable name="CircleProgressTextView">
         <attr name="progress" format="float"></attr>
+        <attr name="circle_paint_width" format="dimension"></attr>
+        <attr name="progress_paint_width" format="dimension"></attr>
     </declare-styleable>
 </resources>

@@ -21,6 +21,18 @@ Step 2. Add the dependency
 			compile 'com.github.pdliugithub:CircleProgressTextView:v1.0'
 	}
 
+Step 3. Add the code
+
+	<com.rossia.life.circleprogress.CircleProgressTextView
+		android:id="@+id/circle_progress_tv"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="10dp"
+		app:progress_paint_width="5dp"
+		app:circle_paint_width="5dp"
+		android:layout_centerHorizontal="true"
+		android:text="跳过"
+		app:progress="120" />
 ***
 
 > ## Medal

@@ -25,11 +25,6 @@ import android.view.Gravity;
 public class CircleProgressTextView extends AppCompatTextView {
 
     private static final String TAG = "CircleProgressTextView";
-    /**
-     * 默认的宽、高.{@link CircleProgressTextView}
-     */
-    private static final int DEFAULT_WIDTH = 200;
-    private static final int DEFAULT_HEIGHT = 200;
 
     /**
      * Paints.
@@ -49,16 +44,9 @@ public class CircleProgressTextView extends AppCompatTextView {
      * @see #mProgressPaint .
      * @see #mCirclePaint .
      */
-    private int mCirclePaintDefaultWidth = 10;
-    private int mProgressPaintDefaultWidth = 10;
+    private float mCirclePaintDefaultWidth;
+    private float mProgressPaintDefaultWidth;
 
-    /**
-     * Padding.
-     */
-    private int mLeftPadding;
-    private int mTopPadding;
-    private int mRightPadding;
-    private int mBottomPadding;
     private int mCircleWidth;
 
     /**
@@ -85,6 +73,8 @@ public class CircleProgressTextView extends AppCompatTextView {
         //获取style attributes.
         TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.CircleProgressTextView);
         mSweepAngle = typedArray.getFloat(R.styleable.CircleProgressTextView_progress, 0f);
+        mCirclePaintDefaultWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressTextView_circle_paint_width, 0);
+        mProgressPaintDefaultWidth = typedArray.getDimensionPixelSize(R.styleable.CircleProgressTextView_progress_paint_width, 0);
         //recycle resource.
         typedArray.recycle();
 
@@ -143,29 +133,40 @@ public class CircleProgressTextView extends AppCompatTextView {
         //获取当前view的Padding、width、height
         int width = getWidth();
         int height = getHeight();
-        mLeftPadding = getPaddingLeft();
-        mTopPadding = getPaddingTop();
-        mRightPadding = getPaddingRight();
-        mBottomPadding = getPaddingBottom();
 
-        width = width - mLeftPadding - mRightPadding - (mCirclePaintDefaultWidth * 2);
-        height = height - mTopPadding - mBottomPadding - (mCirclePaintDefaultWidth * 2);
+        int paddingLeft = getPaddingLeft();
+        int paddingTop = getPaddingTop();
+        int paddingRight = getPaddingRight();
+        int paddingBottom = getPaddingBottom();
+
+//        width = width - mLeftPadding - mRightPadding - (mCirclePaintDefaultWidth * 2);
+//        height = height - mTopPadding - mBottomPadding - (mCirclePaintDefaultWidth * 2);
+        width = width - (int) (mCirclePaintDefaultWidth * 2);
+        height = height - (int) (mCirclePaintDefaultWidth * 2);
 
         //圆形进度的宽度(取最大值)
         mCircleWidth = width >= height ? width : height;
         int radius = mCircleWidth / 2;
 
-        canvas.drawCircle(mLeftPadding + radius + mCirclePaintDefaultWidth, mTopPadding + radius + mCirclePaintDefaultWidth, radius, mCirclePaint);
+        canvas.drawCircle(radius + (int) (mCirclePaintDefaultWidth * 0.5), radius + (int) (mCirclePaintDefaultWidth * 0.5), radius, mCirclePaint);
+
+        /*
+        绘制的Rect边界
+         */
+        int drawLeft = (int) (mCirclePaintDefaultWidth * 0.5);
+        int drawTop = (int) (mCirclePaintDefaultWidth * 0.5);
+        int drawRight = mCircleWidth + (int) (mCirclePaintDefaultWidth * 0.5);
+        int drawBottom = mCircleWidth + (int) (mCirclePaintDefaultWidth * 0.5);
 
         //兼容版本.
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             //>= LOLLIPOP
-            canvas.drawArc(mLeftPadding + mCirclePaintDefaultWidth, mTopPadding + mCirclePaintDefaultWidth, mLeftPadding + mCircleWidth + mCirclePaintDefaultWidth, mTopPadding + mCircleWidth + mCirclePaintDefaultWidth, mStartAngle, mSweepAngle, false
+            canvas.drawArc(drawLeft, drawTop, drawRight, drawBottom, mStartAngle, mSweepAngle, false
                     , mProgressPaint);
         } else {
 
             //< LOLLIPOP
-            RectF rectF = new RectF(mLeftPadding + mCirclePaintDefaultWidth, mTopPadding + mCirclePaintDefaultWidth, mLeftPadding + mCircleWidth + mCirclePaintDefaultWidth, mTopPadding + mCircleWidth + mCirclePaintDefaultWidth);
+            RectF rectF = new RectF(drawLeft, drawTop, drawRight, drawBottom);
             canvas.drawArc(rectF, mStartAngle, mSweepAngle, false
                     , mProgressPaint);
         }
@@ -174,22 +175,9 @@ public class CircleProgressTextView extends AppCompatTextView {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        //获取Size\Mode
-        int sizeWidth = MeasureSpec.getSize(widthMeasureSpec);
-        int modeWidth = MeasureSpec.getMode(widthMeasureSpec);
-        int sizeHeight = MeasureSpec.getSize(heightMeasureSpec);
-        int modeHeight = MeasureSpec.getMode(heightMeasureSpec);
 
-        if (modeWidth == MeasureSpec.AT_MOST || modeHeight == MeasureSpec.AT_MOST) {
-            //设置默认的View宽和高
-            setMeasuredDimension(DEFAULT_WIDTH, DEFAULT_HEIGHT);
-            return;
-        }
-        if (modeWidth != MeasureSpec.AT_MOST || modeHeight != MeasureSpec.AT_MOST){
-            //取最大值作为View的宽和高
-            int size = sizeWidth >= sizeHeight ? sizeWidth : sizeHeight;
-            setMeasuredDimension(size, size);
-        }
+        int size = getMeasuredWidth() + (int) mCirclePaintDefaultWidth;
+        setMeasuredDimension(size, size);
 
     }
 
