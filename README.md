@@ -1,6 +1,7 @@
 # CircleProgressTextView
 CircleProgressTextView
 
+![使用效果图片] (/gif/screen02.gif )
 
 ## Use in help :
 
@@ -37,4 +38,4 @@ Step 3. Add the code
 
 > ## Medal
 
-[！[]（https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg）（https://jitpack.io/#pdliugithub/CircleProgressTextView）
+![Medal]（https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg）（https://jitpack.io/#pdliugithub/CircleProgressTextView）
