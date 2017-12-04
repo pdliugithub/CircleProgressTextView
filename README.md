@@ -38,4 +38,4 @@ Step 3. Add the code
 
 > ## Medal
 
-![Medal](https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg "medal展示")（https://jitpack.io/#pdliugithub/CircleProgressTextView "链接""）
+![Medal](https://jitpack.io/v/pdliugithub/CircleProgressTextView.svg "medal展示")
