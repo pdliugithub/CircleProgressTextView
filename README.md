@@ -1,7 +1,7 @@
 # CircleProgressTextView
 CircleProgressTextView
 
-![使用效果图片] (/gif/screen02.gif )
+![使用效果图片] (https://github.com/pdliugithub/CircleProgressTextView/blob/master/gif/screen02.gif)
 
 ## Use in help :
 
